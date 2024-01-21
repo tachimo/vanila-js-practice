@@ -576,9 +576,24 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"aR1JP":[function(require,module,exports) {
 var _stylesCss = require("./styles.css");
-document.getElementById("app").innerHTML = `
-<h1>Hello JavaScript!</h1>
-`;
+const onClickAdd = ()=>{
+    //テキストボックスの値を取得し、初期化する。
+    const inputText = document.getElementById("add-text").value;
+    document.getElementById("add-text").value = "";
+    //liタグの生成
+    const li = document.createElement("li");
+    //divタグの生成
+    const div = document.createElement("div");
+    div.className = "list-row";
+    //pタグの生成
+    const p = document.createElement("p");
+    p.className = "todo-item";
+    p.innerText = inputText;
+    div.appendChild(p);
+    li.appendChild(div);
+    console.log(li);
+};
+document.getElementById("add-button").addEventListener("click", onClickAdd);
 
 },{"./styles.css":"lW6qc"}],"lW6qc":[function() {},{}]},["iZQ9B","aR1JP"], "aR1JP", "parcelRequirebaba")
 
