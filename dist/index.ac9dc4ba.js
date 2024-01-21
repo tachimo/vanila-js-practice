@@ -589,10 +589,25 @@ const onClickAdd = ()=>{
     const p = document.createElement("p");
     p.className = "title";
     p.innerText = inputText;
-    //タグ同士の継承
+    //ボタン(完了)の生成
+    const completeButton = document.createElement("button");
+    completeButton.innerText = "\u5B8C\u4E86";
+    completeButton.addEventListener("click", ()=>{
+        alert("\u5B8C\u4E86");
+    });
+    //ボタン(削除)の生成
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "\u524A\u9664";
+    deleteButton.addEventListener("click", ()=>{
+        alert("\u524A\u9664");
+    });
+    //liタグの要素に各要素を継承、右：親、左が子要素
     div.appendChild(p);
+    div.appendChild(completeButton);
+    div.appendChild(deleteButton);
     li.appendChild(div);
-    console.log(li);
+    //未完了リストに追加
+    document.getElementById("incomplete-list").appendChild(li);
 };
 document.getElementById("add-button").addEventListener("click", onClickAdd);
 
