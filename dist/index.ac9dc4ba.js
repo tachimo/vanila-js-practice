@@ -587,19 +587,21 @@ const onClickAdd = ()=>{
     div.className = "list-row";
     //pタグの生成
     const p = document.createElement("p");
-    p.className = "title";
+    p.className = "todo-text";
     p.innerText = inputText;
     //ボタン(完了)の生成
     const completeButton = document.createElement("button");
     completeButton.innerText = "\u5B8C\u4E86";
     completeButton.addEventListener("click", ()=>{
-        alert("\u5B8C\u4E86");
+    //押された完了ボタンの親にあるliタグ配下の完了ボタンと削除ボタンを削除
     });
     //ボタン(削除)の生成
     const deleteButton = document.createElement("button");
     deleteButton.innerText = "\u524A\u9664";
     deleteButton.addEventListener("click", ()=>{
-        alert("\u524A\u9664");
+        //押された削除ボタンの親にあるliタグを未完了リストから削除
+        const deleteTarget = deleteButton.closest("li");
+        document.getElementById("incomplete-list").removeChild(deleteTarget);
     });
     //liタグの要素に各要素を継承、右：親、左が子要素
     div.appendChild(p);
