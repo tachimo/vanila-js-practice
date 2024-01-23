@@ -593,7 +593,22 @@ const onClickAdd = ()=>{
     const completeButton = document.createElement("button");
     completeButton.innerText = "\u5B8C\u4E86";
     completeButton.addEventListener("click", ()=>{
-    //押された完了ボタンの親にあるliタグ配下の完了ボタンと削除ボタンを削除
+        //押された完了ボタンの親にあるliタグ配下の完了ボタンと削除ボタンを削除
+        const moveTarget = completeButton.closest("li");
+        completeButton.nextElementSibling.remove();
+        completeButton.remove();
+        //戻すボタンを生成してdiv配下に設定
+        const backButton = document.createElement("button");
+        backButton.innerText = "\u623B\u3059";
+        moveTarget.firstElementChild.appendChild(backButton);
+        document.getElementById("complete-list").appendChild(moveTarget);
+        backButton.addEventListener("click", ()=>{
+            backButton.remove();
+            moveTarget.firstElementChild.appendChild(completeButton);
+            document.getElementById("incomplete-list").appendChild(moveTarget);
+            moveTarget.firstElementChild.appendChild(deleteButton);
+            document.getElementById("incomplete-list").appendChild(moveTarget);
+        });
     });
     //ボタン(削除)の生成
     const deleteButton = document.createElement("button");
